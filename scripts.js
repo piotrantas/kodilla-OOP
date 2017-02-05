@@ -89,8 +89,10 @@ $(function() { // umieszczaymy w tym by mieć pewność, że wszystko wykona si�
 
 	$('.create-column').click(function(){ // do przycisku (już w html) dodamy funkcję tworzącą nowe kolumny 
 		var name = prompt('Wpisz nazwę kolumny'); // nazwą będzie to co wpiszemy w prompt
-		var column = new Column(name); // na podtawie klasy stworzy kolumnę z nazwą (parametrem name) ja kw prompt
-    	board.addColumn(column); // wyświetli nową kolumnę
+		if (name != null) { // nie wpisanie niczego w prompt albo cancel nie dodaje kolumny
+			var column = new Column(name); // na podtawie klasy stworzy kolumnę z nazwą (parametrem name) ja kw prompt
+    		board.addColumn(column); // wyświetli nową kolumnę
+		}
 	});
 
 	// TWORZENIE KOLUMN // na podstawie klas i mechanizmów (prototypów) stowrzymy od razu nowe kolumny
