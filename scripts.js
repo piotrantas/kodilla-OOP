@@ -31,9 +31,12 @@ $(function() { // umieszczaymy w tym by mieć pewność, że wszystko wykona si�
         		self.removeColumn();
 			});
 
-			$columnAddCard.click(function() { //podpina funkcję pod button do dodawania karteczek
-        		self.addCard(new Card(prompt("Wpisz nazwę karty"))); // po kliku na button wykona add Card z tym co wpiszemy w prompt jako parametrem funkcji
-			});
+			$columnAddCard.click(function() {
+				var name = prompt('Wpisz nazwę karty'); // nazwą będzie to co wpiszemy w prompt
+				if (name != null) { // nie wpisanie niczego w prompt albo cancel nie dodaje kolumny
+    				self.addCard(new Card(name)); // wyświetli nową kolumnę
+				}
+        	});
 
 			$column.append($columnTitle).append($columnDelete).append($columnAddCard).append($columnCardList); //metada dodająca po kolei elementy kolumny
 			return $column; // i w efekcie powyższego zwraca całą kolumnę ze wszystkimi jej elementami
